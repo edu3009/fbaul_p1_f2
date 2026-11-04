@@ -1,0 +1,311 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: "Rethink Sans", sans-serif;
+  line-height: 1.25;
+  background: #fff;
+}
+
+#stage {
+  background: #fff;
+  isolation: isolate;
+  overflow-x: clip;
+  cursor: none;
+}
+
+main {
+  padding: 0 3vw;
+}
+
+/* ---------- CORES ---------- */
+.y,
+.m,
+.c {
+  mix-blend-mode: multiply;
+}
+
+.y {
+  color: #ffff00;
+}
+
+.m {
+  color: #ff00ff;
+}
+
+.c {
+  color: #00ffff;
+}
+
+/* ---------- TEXTO ---------- */
+.lg {
+  font-size: min(1.8vw, 40px);
+  font-weight: 700;
+}
+
+.md {
+  font-size: min(1.3vw, 30px);
+  font-weight: 500;
+}
+
+.sm {
+  font-size: min(1.1vw, 26px);
+  font-weight: 400;
+}
+
+h1 {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 800;
+  font-size: 18vw;
+  line-height: .85;
+  letter-spacing: -.035em;
+  width: max-content;
+}
+
+figcaption {
+  font-size: 15px;
+  font-style: italic;
+  text-align: left;
+  width: fit-content;
+  max-width: 70%;
+  margin: .4em auto 0;
+}
+
+/* ---------- LAYOUT ---------- */
+
+img {
+  display: block;
+  width: 100%;
+}
+
+section {
+  margin-top: 5vh;
+}
+
+.finale {
+  margin-top: 30vh;
+}
+
+footer {
+  margin: 5vh 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  column-gap: 1vw;
+}
+
+.grid>* {
+  align-self: start;
+  padding-bottom: 2rem;
+}
+
+#story section.grid {
+  grid-template-rows: repeat(12, 5vw);
+}
+
+header.grid {
+  position: sticky;
+  top: 0;
+  padding-top: 2vh;
+  height: 100dvh;
+  overflow: hidden;
+  grid-template-rows: repeat(6, minmax(0, 1fr));
+}
+
+#story section {
+  position: relative;
+}
+
+#story>section:first-of-type {
+  margin-top: -70vh;
+}
+
+/* ---------- LENTE ---------- */
+#lens {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: min(500px, 60vw);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  background: #00f;
+  mix-blend-mode: multiply;
+  transition: width .25s ease;
+}
+
+#lens.mini {
+  width: 40px;
+}
+
+/* ---------- OLHOS ---------- */
+#eyes {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  cursor: none;
+  width: 130px;
+  height: 70px;
+  transition: .3s;
+  mix-blend-mode: multiply;
+}
+
+#eyes img {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  width: 120px;
+  mix-blend-mode: multiply;
+  transition: transform .3s, opacity .3s;
+}
+
+#eyes:hover {
+  height: 250px;
+}
+
+#eyes:hover img:nth-child(1) {
+  transform: translateY(260%);
+}
+
+#eyes:hover img:nth-child(2) {
+  transform: translateY(130%);
+}
+
+#eyes:hover img:not(.on) {
+  opacity: .4;
+}
+
+/* ---------- TELEMÓVEL: desfaz o layout de computador ---------- */
+@media (max-width: 1099px) {
+  #stage {
+    cursor: auto;
+  }
+
+  /* texto */
+  .lg {
+    font-size: clamp(1.5rem, 5vw, 2.1rem);
+  }
+
+  .md {
+    font-size: clamp(1.25rem, 4vw, 1.6rem);
+  }
+
+  .sm {
+    font-size: clamp(1.1rem, 3.4vw, 1.3rem);
+  }
+
+  figcaption {
+    font-size: 1rem;
+  }
+
+  /* sem grelha */
+  .grid {
+    display: flow-root;
+    /* contém os blocos flutuantes */
+  }
+
+  .grid>* {
+    padding-bottom: 0;
+  }
+
+  .grid>*+* {
+    margin-top: 1rem;
+  }
+
+  /* o header continua sticky (ocupa o ecrã); só o conteúdo dele empilha */
+  header.grid {
+    padding-top: 7vh;
+  }
+
+  header.grid>*+* {
+    margin-top: .5rem;
+  }
+
+  /* a primeira secção sobe e começa por cima do header */
+  #story>section:first-of-type {
+    margin-top: -50vh;
+  }
+
+  /* duas faixas paralelas (magenta e ciano), cada bloco com a largura toda.
+     O ciano recua 100%, por isso fica exatamente por cima do magenta,
+     qualquer que seja a ordem no HTML.
+     Regra: com largura L, recuo = 100% - 2L (L=100% -> recuo -100%). */
+  .m,
+  .c {
+    width: 100%;
+  }
+
+  .m {
+    float: left;
+    clear: left;
+  }
+
+  .c {
+    float: right;
+    clear: right;
+    margin-left: -100%;
+  }
+
+  /* o filtro ocupa o ecrã todo e começa branco */
+  #lens,
+  #lens.mini {
+    left: 0 !important;
+    top: 0 !important;
+    width: 100%;
+    height: 100dvh;
+    transform: none;
+    border-radius: 0;
+    background: #fff;
+    transition: background-color .25s;
+  }
+
+  /* olhos: sem hover; empilhados, e ao tocar (classe "aberto") descem */
+  #eyes {
+    width: 90px;
+    height: 47px;
+    cursor: auto;
+    border-radius: 14px;
+  }
+
+  #eyes:hover {
+    height: 47px;
+  }
+
+  #eyes:hover img:nth-child(1),
+  #eyes:hover img:nth-child(2) {
+    transform: none;
+  }
+
+  #eyes:hover img:not(.on) {
+    opacity: 1;
+  }
+
+  #eyes.aberto {
+    height: 170px;
+    mix-blend-mode: normal;
+    background-color: rgba(255, 255, 255, .85);
+    transition: height .3s, background-color .3s;
+  }
+
+  #eyes img {
+    width: 80px;
+  }
+
+  #eyes.aberto img:nth-child(1) {
+    transform: translateY(260%);
+  }
+
+  #eyes.aberto img:nth-child(2) {
+    transform: translateY(130%);
+  }
+
+  #eyes.tem-filtro.aberto img:not(.on) {
+    opacity: .4;
+  }
+}
