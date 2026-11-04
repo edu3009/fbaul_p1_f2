@@ -181,7 +181,7 @@ header.grid {
   opacity: .4;
 }
 
-/* ---------- TELEMÓVEL: desfaz o layout de computador ---------- */
+/* ---------- TELEMÓVEL ---------- */
 @media (max-width: 1099px) {
   #stage {
     cursor: auto;
@@ -217,8 +217,7 @@ header.grid {
   .grid>*+* {
     margin-top: 1rem;
   }
-
-  /* o header continua sticky (ocupa o ecrã); só o conteúdo dele empilha */
+  
   header.grid {
     padding-top: 7vh;
   }
@@ -227,15 +226,10 @@ header.grid {
     margin-top: .5rem;
   }
 
-  /* a primeira secção sobe e começa por cima do header */
   #story>section:first-of-type {
     margin-top: -50vh;
   }
 
-  /* duas faixas paralelas (magenta e ciano), cada bloco com a largura toda.
-     O ciano recua 100%, por isso fica exatamente por cima do magenta,
-     qualquer que seja a ordem no HTML.
-     Regra: com largura L, recuo = 100% - 2L (L=100% -> recuo -100%). */
   .m,
   .c {
     width: 100%;
@@ -252,7 +246,6 @@ header.grid {
     margin-left: -100%;
   }
 
-  /* o filtro ocupa o ecrã todo e começa branco */
   #lens,
   #lens.mini {
     left: 0 !important;
@@ -265,7 +258,6 @@ header.grid {
     transition: background-color .25s;
   }
 
-  /* olhos: sem hover; empilhados, e ao tocar (classe "aberto") descem */
   #eyes {
     width: 90px;
     height: 47px;
