@@ -220,6 +220,7 @@ header.grid {
 
   header.grid {
     padding-top: 7vh;
+    mix-blend-mode: multiply;
   }
 
   header.grid>*+* {
@@ -247,7 +248,6 @@ header.grid {
     margin-left: -100%;
   }
 
-  /* o filtro ocupa o ecrã todo e começa branco */
   #lens,
   #lens.mini {
     left: 0 !important;
