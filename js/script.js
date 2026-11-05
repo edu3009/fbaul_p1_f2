@@ -1,8 +1,7 @@
 const lens = document.getElementById('lens');
 const cores = ['#0000ff', '#00ff00', '#ff0000'];
-let atual = -1;
+let atual = 0;
 
-// n = -1 (sem filtro), 0 (azul), 1 (verde) ou 2 (vermelho)
 function mudarFiltro(n) {
   atual = n;
   lens.hidden = false;
@@ -51,4 +50,4 @@ function ajustarTitulo() {
 document.fonts.ready.then(ajustarTitulo);
 addEventListener('resize', ajustarTitulo);
 
-mudarFiltro(-1);
+mudarFiltro(0);
