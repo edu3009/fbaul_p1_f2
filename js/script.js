@@ -1,5 +1,6 @@
 const lens = document.getElementById('lens');
 const btn = document.getElementById('filtro-btn');
+const hint = document.getElementById('filtro-hint');
 const cores = ['#0000ff', '#00ff00', '#ff0000'];
 let atual = 0;
 
@@ -10,12 +11,21 @@ function mudarFiltro(n) {
   if (n < 0) {
     lens.classList.add('neutro');
     lens.style.backgroundColor = '#000000';
+    // No neutro, a borda continua visível a preto
+    if (btn) btn.style.borderColor = '#000000';
   } else {
     lens.classList.remove('neutro');
     lens.style.backgroundColor = cores[n];
+    // Borda acompanha a cor do filtro ativo
+    if (btn) btn.style.borderColor = cores[n];
   }
 
   document.body.classList.toggle('com-lente', n >= 0);
+
+  // "click me" só aparece enquanto estiver no filtro azul (n === 0)
+  if (hint) {
+    hint.classList.toggle('visivel', n === 0);
+  }
 }
 
 // ---------- a lente segue o rato com um smoothing leve ----------
@@ -44,17 +54,14 @@ function avancarFiltro() {
   mudarFiltro(atual >= 2 ? -1 : atual + 1);
 }
 
-// Mobile: clica no botão preto
-window.addEventListener('pointerup', e => {
-  if (e.pointerType === 'touch') {
-    tocouMobile = true;
-    avancarFiltro();
-    setTimeout(() => { tocouMobile = false; }, 350);
-  }
+// Mobile: clica no botão redondo
+btn.addEventListener('click', e => {
+  e.stopPropagation();
+  avancarFiltro();
 });
+
 // Desktop: clica em qualquer ponto da página
 window.addEventListener('click', () => {
-  // Ignora se estiver em ecrã pequeno/mobile para não disparar toques acidentais
   if (window.innerWidth <= 1099) return;
   avancarFiltro();
 });
@@ -68,5 +75,5 @@ function ajustarTitulo() {
 document.fonts.ready.then(ajustarTitulo);
 addEventListener('resize', ajustarTitulo);
 
-// Começa com a lente azul
+// Começa com a lente azul e aplica a borda azul logo de início
 mudarFiltro(0);
