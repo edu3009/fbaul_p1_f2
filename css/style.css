@@ -203,7 +203,6 @@ header.grid {
   /* sem grelha */
   .grid {
     display: flow-root;
-    /* contém os blocos flutuantes */
   }
 
   .grid>* {
@@ -212,6 +211,10 @@ header.grid {
 
   .grid>*+* {
     margin-top: 1rem;
+  }
+
+  header {
+    mix-blend-mode: multiply;
   }
 
   header.grid {
