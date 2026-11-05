@@ -100,6 +100,7 @@ header.grid {
   top: 0;
   padding-top: 2vh;
   height: 100dvh;
+  mix-blend-mode: multiply;
   grid-template-rows: repeat(6, minmax(0, 1fr));
 }
 
@@ -213,7 +214,7 @@ header.grid {
   header.grid {
     padding-top: 7vh;
     mix-blend-mode: multiply;
-    }
+  }
 
   header.grid>*+* {
     margin-top: .5rem;
