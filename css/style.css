@@ -23,10 +23,6 @@ main {
 }
 
 /* ---------- CORES ---------- */
-.y,
-.m,
-.c {
-}
 
 .y {
   color: #ffff00;
@@ -209,9 +205,6 @@ header.grid {
   .grid>*+* {
     margin-top: 1rem;
   }
-
-  header {
-    }
 
   header.grid {
     padding-top: 7vh;
