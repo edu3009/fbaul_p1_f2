@@ -135,51 +135,14 @@ header.grid {
   width: 40px;
 }
 
-/* ---------- OLHOS ---------- */
-#eyes {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 10;
-  cursor: none;
-  width: 130px;
-  height: 70px;
-  transition: .3s;
-}
-
-#eyes img {
-  position: absolute;
-  top: 0;
-  right: 5px;
-  width: 120px;
-  transition: transform .3s, opacity .3s;
-}
-
-#eyes:hover {
-  height: 250px;
-}
-
-#eyes:hover img:nth-child(1) {
-  transform: translateY(260%);
-}
-
-#eyes:hover img:nth-child(2) {
-  transform: translateY(130%);
-}
-
-#eyes:hover img:not(.on) {
-  opacity: .4;
+#filtro-btn {
+  display: none;
 }
 
 /* ---------- TELEMÓVEL: desfaz o layout de computador ---------- */
 @media (max-width: 1099px) {
   * {
     mix-blend-mode: multiply;
-    cursor: auto !important;
-  }
-
-  #stage {
-    cursor: auto;
   }
 
   /* texto */
@@ -213,15 +176,9 @@ header.grid {
   }
 
   header.grid {
-    padding-top: 7vh;
     mix-blend-mode: multiply;
   }
 
-  header.grid>*+* {
-    margin-top: .5rem;
-  }
-
-  /* a primeira secção sobe e começa por cima do header */
   #story>section:first-of-type {
     margin-top: -50vh;
   }
@@ -258,5 +215,25 @@ header.grid {
     width: 100%;
     height: 100dvh;
     background: #fff !important;
+  }
+
+  #filtro-btn {
+    display: block;
+    position: sticky;
+    justify-self: end;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #000;
+    border: none;
+    outline: none;
+    z-index: 999;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.15s ease;
+  }
+
+  #filtro-btn:active {
+    transform: scale(0.9);
   }
 }

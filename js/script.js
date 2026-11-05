@@ -1,8 +1,8 @@
 const lens = document.getElementById('lens');
+const btn = document.getElementById('filtro-btn');
 const cores = ['#0000ff', '#00ff00', '#ff0000'];
 let atual = 0;
 
-//mudar filtro
 function mudarFiltro(n) {
   atual = n;
   lens.hidden = false;
@@ -18,7 +18,7 @@ function mudarFiltro(n) {
   document.body.classList.toggle('com-lente', n >= 0);
 }
 
-// lente segue o rato
+// ---------- a lente segue o rato com um smoothing leve ----------
 let alvoX = innerWidth / 2, alvoY = innerHeight / 2;
 let x = alvoX, y = alvoY;
 let antes = 0;
@@ -29,7 +29,7 @@ addEventListener('pointermove', e => {
 });
 
 function animar(agora) {
-  const k = 1 - Math.exp(-(agora - antes) / 60);   // 60 = suavidade 
+  const k = 1 - Math.exp(-(agora - antes) / 60);
   antes = agora;
   x += (alvoX - x) * k;
   y += (alvoY - y) * k;
@@ -39,13 +39,12 @@ function animar(agora) {
 }
 requestAnimationFrame(animar);
 
-let tocouMobile = false;
-
+// ---------- função para avançar o ciclo de cores ----------
 function avancarFiltro() {
   mudarFiltro(atual >= 2 ? -1 : atual + 1);
 }
 
-// Mobile
+// Mobile: clica no botão preto
 window.addEventListener('pointerup', e => {
   if (e.pointerType === 'touch') {
     tocouMobile = true;
@@ -53,14 +52,14 @@ window.addEventListener('pointerup', e => {
     setTimeout(() => { tocouMobile = false; }, 350);
   }
 });
-
-// Desktop
+// Desktop: clica em qualquer ponto da página
 window.addEventListener('click', () => {
-  if (tocouMobile) return;
+  // Ignora se estiver em ecrã pequeno/mobile para não disparar toques acidentais
+  if (window.innerWidth <= 1099) return;
   avancarFiltro();
 });
 
-// Titulo na tela toda
+// ---------- ajuste de tipo do título ----------
 const titulo = document.querySelector('h1');
 function ajustarTitulo() {
   titulo.style.fontSize = '100px';
@@ -69,4 +68,5 @@ function ajustarTitulo() {
 document.fonts.ready.then(ajustarTitulo);
 addEventListener('resize', ajustarTitulo);
 
+// Começa com a lente azul
 mudarFiltro(0);
