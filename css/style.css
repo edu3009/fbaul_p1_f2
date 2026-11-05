@@ -21,6 +21,7 @@ main {
 }
 
 /* ---------- CORES ---------- */
+
 .y,
 .m,
 .c {
@@ -40,6 +41,7 @@ main {
 }
 
 /* ---------- TEXTO ---------- */
+
 .lg {
   font-size: min(1.8vw, 40px);
   font-weight: 700;
@@ -55,21 +57,11 @@ main {
   font-weight: 400;
 }
 
-h1 {
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-weight: 800;
-  font-size: 18vw;
-  line-height: .85;
-  letter-spacing: -.035em;
-  width: max-content;
-}
-
 figcaption {
   font-size: 15px;
   font-style: italic;
   text-align: left;
   width: fit-content;
-  max-width: 70%;
   margin: .4em auto 0;
 }
 
@@ -82,10 +74,6 @@ img {
 
 section {
   margin-top: 5vh;
-}
-
-.finale {
-  margin-top: 30vh;
 }
 
 footer {
@@ -220,6 +208,7 @@ header.grid {
   
   header.grid {
     padding-top: 7vh;
+    overflow: visible;
   }
 
   header.grid>*+* {
