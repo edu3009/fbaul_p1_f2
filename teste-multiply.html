@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teste multiply</title>
+<style>
+  body { margin: 0; padding: 16px; font: 16px system-ui, sans-serif; background: #fff; }
+  p { margin: 0 0 6px; }
+  .box { position: relative; height: 110px; margin-bottom: 26px; background: #fff; outline: 1px solid #ccc; }
+  .box i, .box b { position: absolute; mix-blend-mode: multiply; }
+  .box i { width: 45%; height: 70px; top: 20px; }
+  .y { background: #ff0; left: 5%; }
+  .m { background: #f0f; left: 30%; }
+  .c { background: #0ff; left: 55%; }
+  .box b { font-size: 64px; top: 10px; }
+  b.y { background: none; color: #ff0; left: 5%; }
+  b.m { background: none; color: #f0f; left: 22%; }
+  b.c { background: none; color: #0ff; left: 39%; }
+  .iso { isolation: isolate; }
+  .clip { overflow-x: clip; }
+  .st { position: sticky; top: 0; overflow: hidden; height: 110px; }
+  #lens { position: fixed; left: 50%; top: 50%; width: 140px; aspect-ratio: 1; transform: translate(-50%, -50%);
+          border-radius: 50%; background: #00f; mix-blend-mode: multiply; pointer-events: none; }
+</style>
+</head>
+<body>
+<p><b>Como ler:</b> onde amarelo e magenta se cruzam deve ficar <b>vermelho</b>; onde magenta e ciano se cruzam deve ficar <b>azul</b>. Se a cor de cima simplesmente tapar a de baixo, esse caso falhou.</p>
+
+<p>1. Simples</p>
+<div class="box"><i class="y"></i><i class="m"></i><i class="c"></i></div>
+
+<p>2. Com isolation (como o #stage)</p>
+<div class="box iso"><i class="y"></i><i class="m"></i><i class="c"></i></div>
+
+<p>3. Com isolation + overflow-x: clip</p>
+<div class="box iso clip"><i class="y"></i><i class="m"></i><i class="c"></i></div>
+
+<p>4. O amarelo está dentro de um bloco sticky com overflow hidden (como o header)</p>
+<div class="box iso"><div class="st"><i class="y"></i></div><i class="m"></i><i class="c"></i></div>
+
+<p>5. Texto</p>
+<div class="box iso"><b class="y">Aa</b><b class="m">Aa</b><b class="c">Aa</b></div>
+
+<p>6. Círculo azul fixo no meio do ecrã (como a lente). Faz scroll para passar os casos por baixo dele: o amarelo deve ficar preto, e o magenta e o ciano devem ficar azuis (quase invisíveis).</p>
+<div class="box iso"><i class="y"></i><i class="m"></i><i class="c"></i></div>
+<div class="box iso"><i class="y"></i><i class="m"></i><i class="c"></i></div>
+<div class="box iso"><i class="y"></i><i class="m"></i><i class="c"></i></div>
+
+<div id="lens"></div>
+</body>
+</html>
