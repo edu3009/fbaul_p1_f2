@@ -57,6 +57,14 @@ main {
   font-weight: 400;
 }
 
+h1 {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 800;
+  line-height: .85;
+  letter-spacing: -.035em;
+  width: max-content;
+}
+
 figcaption {
   font-size: 15px;
   font-style: italic;
