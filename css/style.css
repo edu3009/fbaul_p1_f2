@@ -124,7 +124,7 @@ header.grid {
   pointer-events: none;
   background: #00f;
   mix-blend-mode: multiply;
-  transition: width .25s ease, background-color .25s ease;
+  transition: width .25s ease-in-out, background-color .25s ease-in-out;
 }
 
 #lens.neutro {
@@ -245,7 +245,7 @@ header.grid {
     opacity: 0;
     transform: translateY(4px);
     pointer-events: none;
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
   }
 
   /* Classe para desaparecer suavemente */
@@ -266,7 +266,7 @@ header.grid {
     box-shadow: none;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
-    transition: transform 0.15s ease, border-color 0.25s ease;
+    transition: transform 0.15s ease-in-out, border-color 0.25s ease-in-out;
   }
 
   #filtro-btn:active {
