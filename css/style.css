@@ -69,7 +69,6 @@ figcaption {
   font-style: italic;
   text-align: left;
   width: fit-content;
-  max-width: 70%;
   margin: .4em auto 0;
 }
 
@@ -78,14 +77,6 @@ figcaption {
 img {
   display: block;
   width: 100%;
-}
-
-section {
-  margin-top: 5vh;
-}
-
-.finale {
-  margin-top: 30vh;
 }
 
 footer {
