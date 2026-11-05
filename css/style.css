@@ -26,7 +26,6 @@ main {
 .y,
 .m,
 .c {
-  mix-blend-mode: multiply;
 }
 
 .y {
@@ -105,7 +104,6 @@ header.grid {
   top: 0;
   padding-top: 2vh;
   height: 100dvh;
-  mix-blend-mode: multiply;
   grid-template-rows: repeat(6, minmax(0, 1fr));
 }
 
@@ -128,7 +126,6 @@ header.grid {
   border-radius: 50%;
   pointer-events: none;
   background: #00f;
-  mix-blend-mode: multiply;
   transition: width .25s ease, background-color .25s ease;
 }
 
@@ -151,7 +148,6 @@ header.grid {
   width: 130px;
   height: 70px;
   transition: .3s;
-  mix-blend-mode: multiply;
 }
 
 #eyes img {
@@ -159,7 +155,6 @@ header.grid {
   top: 0;
   right: 5px;
   width: 120px;
-  mix-blend-mode: multiply;
   transition: transform .3s, opacity .3s;
 }
 
@@ -216,13 +211,11 @@ header.grid {
   }
 
   header {
-    mix-blend-mode: multiply;
-  }
+    }
 
   header.grid {
     padding-top: 7vh;
-    mix-blend-mode: multiply;
-  }
+    }
 
   header.grid>*+* {
     margin-top: .5rem;
