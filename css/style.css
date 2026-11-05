@@ -1,6 +1,8 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  user-select: none;
+  mix-blend-mode: multiply;
 }
 
 body {
