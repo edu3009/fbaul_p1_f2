@@ -59,7 +59,7 @@ h1 {
   font-family: "Bricolage Grotesque", sans-serif;
   font-weight: 800;
   font-size: 18vw;
-  line-height: .85;
+  line-height: 0.9;
   letter-spacing: -.035em;
   width: max-content;
 }
@@ -127,7 +127,12 @@ header.grid {
   pointer-events: none;
   background: #00f;
   mix-blend-mode: multiply;
-  transition: width .25s ease;
+  transition: width .25s ease, background-color .25s ease;
+}
+
+#lens.neutro {
+  width: 14px;
+  background-color: #000;
 }
 
 #lens.mini {
@@ -251,47 +256,9 @@ header.grid {
     transition: background-color .25s;
   }
 
-  /* olhos: sem hover; empilhados, e ao tocar (classe "aberto") descem */
-  #eyes {
-    width: 90px;
-    height: 47px;
-    cursor: auto;
-    border-radius: 14px;
-  }
-
-  #eyes:hover {
-    height: 47px;
-  }
-
-  #eyes:hover img:nth-child(1),
-  #eyes:hover img:nth-child(2) {
-    transform: none;
-  }
-
-  #eyes:hover img:not(.on) {
-    opacity: 1;
-  }
-
-  #eyes.aberto {
-    height: 170px;
-    mix-blend-mode: normal;
-    background-color: rgba(255, 255, 255, .85);
-    transition: height .3s, background-color .3s;
-  }
-
-  #eyes img {
-    width: 80px;
-  }
-
-  #eyes.aberto img:nth-child(1) {
-    transform: translateY(260%);
-  }
-
-  #eyes.aberto img:nth-child(2) {
-    transform: translateY(130%);
-  }
-
-  #eyes.tem-filtro.aberto img:not(.on) {
-    opacity: .4;
+  #lens.neutro {
+    width: 100%;
+    height: 100dvh;
+    background: #fff !important;
   }
 }
