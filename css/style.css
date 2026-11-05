@@ -123,6 +123,7 @@ header.grid {
   border-radius: 50%;
   pointer-events: none;
   background: #00f;
+  mix-blend-mode: multiply;
   transition: width .25s ease, background-color .25s ease;
 }
 
@@ -208,6 +209,7 @@ header.grid {
     transform: none;
     border-radius: 0;
     background: #fff;
+    mix-blend-mode: multiply;
     transition: background-color .25s;
   }
 
@@ -219,8 +221,9 @@ header.grid {
 
   #filtro-btn {
     display: block;
-    position: sticky;
-    justify-self: end;
+    position: fixed;
+    bottom: 1.25rem;
+    right: 1.25rem;
     width: 44px;
     height: 44px;
     border-radius: 50%;
