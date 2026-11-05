@@ -208,7 +208,6 @@ header.grid {
   
   header.grid {
     padding-top: 7vh;
-    overflow: visible;
   }
 
   header.grid>*+* {
