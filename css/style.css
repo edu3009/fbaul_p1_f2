@@ -12,7 +12,6 @@ body {
 #stage {
   background: #fff;
   isolation: isolate;
-  overflow-x: clip;
   cursor: none;
 }
 
