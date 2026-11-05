@@ -172,6 +172,10 @@ header.grid {
 
 /* ---------- TELEMÓVEL: desfaz o layout de computador ---------- */
 @media (max-width: 1099px) {
+  * {
+    mix-blend-mode: multiply;
+  }
+
   #stage {
     cursor: auto;
   }
