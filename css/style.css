@@ -175,6 +175,7 @@ header.grid {
 @media (max-width: 1099px) {
   * {
     mix-blend-mode: multiply;
+    cursor: auto !important;
   }
 
   #stage {
