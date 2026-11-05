@@ -12,6 +12,7 @@ body {
 #stage {
   background: #fff;
   isolation: isolate;
+  overflow-x: clip;
   cursor: none;
 }
 
@@ -95,7 +96,7 @@ footer {
 }
 
 header.grid {
-  position: fixed;
+  position: sticky;
   top: 0;
   padding-top: 2vh;
   height: 100dvh;
