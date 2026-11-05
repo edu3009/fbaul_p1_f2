@@ -212,6 +212,7 @@ header.grid {
 
   header.grid {
     padding-top: 7vh;
+    mix-blend-mode: multiply;
     }
 
   header.grid>*+* {
