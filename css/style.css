@@ -208,7 +208,7 @@ header.grid {
     height: 100dvh;
     transform: none;
     border-radius: 0;
-    background: #fff;
+    background: #fffff1;
     mix-blend-mode: multiply;
     transition: background-color .25s;
   }
