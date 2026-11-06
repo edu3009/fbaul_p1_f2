@@ -1,7 +1,7 @@
 const lens = document.getElementById('lens');
 const btn = document.getElementById('filtro-btn');
 const hint = document.getElementById('filtro-hint');
-const cores = ['#0000ff', '#00ff00', '#ff0000'];
+const cores = ['#000000', '#00ff00', '#ff0000'];
 let atual = 0;
 
 function mudarFiltro(n) {
@@ -9,14 +9,17 @@ function mudarFiltro(n) {
   lens.hidden = false;
 
   if (n < 0) {
+    lens.classList.remove('neutro');
+    lens.style.backgroundColor = '#0000ff';
+    // No neutro, a borda continua visível a preto
+    if (btn) btn.style.borderColor = '#0000ff';
+  } else if (n == 0) {
     lens.classList.add('neutro');
     lens.style.backgroundColor = '#000000';
-    // No neutro, a borda continua visível a preto
     if (btn) btn.style.borderColor = '#000000';
   } else {
     lens.classList.remove('neutro');
     lens.style.backgroundColor = cores[n];
-    // Borda acompanha a cor do filtro ativo
     if (btn) btn.style.borderColor = cores[n];
   }
 
@@ -28,7 +31,7 @@ function mudarFiltro(n) {
   }
 }
 
-// ---------- a lente segue o rato com um smoothing leve ----------
+// lente segue o rato
 let alvoX = innerWidth / 2, alvoY = innerHeight / 2;
 let x = alvoX, y = alvoY;
 let antes = 0;
@@ -39,7 +42,7 @@ addEventListener('pointermove', e => {
 });
 
 function animar(agora) {
-  const k = 1 - Math.exp(-(agora - antes) / 60);
+  const k = 1 - Math.exp(-(agora - antes) / 60); //suavidade
   antes = agora;
   x += (alvoX - x) * k;
   y += (alvoY - y) * k;
@@ -49,24 +52,24 @@ function animar(agora) {
 }
 requestAnimationFrame(animar);
 
-// ---------- função para avançar o ciclo de cores ----------
+// avançar filtro
 function avancarFiltro() {
   mudarFiltro(atual >= 2 ? -1 : atual + 1);
 }
 
-// Mobile: clica no botão redondo
+// mobile
 btn.addEventListener('click', e => {
   e.stopPropagation();
   avancarFiltro();
 });
 
-// Desktop: clica em qualquer ponto da página
+// desktop
 window.addEventListener('click', () => {
   if (window.innerWidth <= 1099) return;
   avancarFiltro();
 });
 
-// ---------- ajuste de tipo do título ----------
+// titulo responsivo
 const titulo = document.querySelector('h1');
 function ajustarTitulo() {
   titulo.style.fontSize = '100px';
@@ -75,5 +78,4 @@ function ajustarTitulo() {
 document.fonts.ready.then(ajustarTitulo);
 addEventListener('resize', ajustarTitulo);
 
-// Começa com a lente azul e aplica a borda azul logo de início
-mudarFiltro(0);
+mudarFiltro(-1);
